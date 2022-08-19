@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="resourcess/css/style.css" media="screen"/>
+        <script type="text/javascript" src="resourcess/scripts/functions.js" ></script>
+        <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script>
+        <title>Tabela de Informação Técnica</title>
+    </h:head>
+
+    <style>
+        body{
+            background-image: url("resourcess/images/background2.jpg");
+            background-repeat: no-repeat;
+            background-size: 100% 770px;
+        }
+    </style>
+
+    <h:body>
+
+        <div id="tabelaInteira">
+            <h1>Insira suas informações</h1>
+            <center>
+                <div class="selectMenu">
+                    <center>
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAABmJLR0QA/wD/AP+gvaeTAAADOUlEQVR4nO3aT4hNYRjH8e+9M2hG/oYSRQqLSU0WShnFrKyIxkLWw4IFKyKKZGGilAUWomZnQyQbf8afadiIyeRfCk00zZgokZm5Fu+57r2ac+c517z3nM79feqszvM893nfd+497zlzQERERERERERERERERERERERERERERERERERSpxvIxXw88j5Kg0zcDQRycTcQiH0+6uNu4B9xTUhS/iDIxt2AlNKCJExSFyQLDOPvAt5XvaH4cwoYxe9OJy8LjPgeUJG4d3j5o8va8Argt+dm7hV9Xha3+NXSVUG/Po4X1oY7g4TzlY44ogx+F+Sdx9pRTQf6cfO71ZLQhJucX8BSf32VyABjHuvnJg6pmsO4fnowbvuvBglnPTY1nlpYkHkUNi8bLAnNuIn5ASw0xC8GBgn/jewtiu0tE5cDBiwNVmiggn4qGcf7Cfo4HcTdtDZ+PUjoMMZfAo5bi6fcMeBcmfNLgJ+4y0GzpeAa3GJ8B+Yb4uuB58BMS/GUawS+AMvLxFzGze8Va9HbQcKJ/2qtNu3BXXvDrKKwUVpmKbgOtxjDwFxDfAvu91CgDngLrC0TcwM3v2esRe8ECUcNsRngKdBmLZ5ybcDDMufX4+b2G7DAUrA1SPgKzDbE7yDCHroGdANbypx/jJvfQ9aC+ccIBw2xU3Ffz43W4inXArwi/KHtNtzc9uPu0Ce0icI9wAxD/D7c1lica8CukHN1wEvc/O62FuwJEvYbYmfhtnZN1uIptxL4DDSEnG/Hze1rYIql4GYKX6dGQ/xJ4KKlcI24ABwJOdcAfMTNr2nzkwWeBQl7jQ28we+j6EFjH5UY8tDvEOE30AeCmCcYNz/bg4QPwLSIg/MhTU9751B4vtdqSSi+2LT76yuSNC1IR/B5t6wJOyk8mZzqqamofP/HcIzq3Dctwj0pHwNWW5P68HstsB7Fbw76XpBRSu8VfL852Rmlubuem4ly5Pl+yWGE0gXxOaZPVO8/rZNmvAXxsRPKH4OMvyASiHtC4v78v5L6olzN0oIkTNLefk/Ez0ackvINeRB3A8D9uBsQERERERERERERERERERERERERERERERERkUn2B1OEFb4tmV2BAAAAAElFTkSuQmCC"/>
+                        <div class="montadora">
+                            <h:form>
+                                <div class="ui-fluid p-formgrid p-grid">
+                                    <div class="p-field p-col-12 p-md-4">
+                                        <p:outputLabel for="@next" value=""/>
+                                        <p:selectOneMenu id="option" value="#{tabelaBean.montadora}" disabled="true">
+                                            <f:selectItem itemLabel="Chevrolet" itemValue="Chevrolet"/>
+                                            <p:ajax update="@this" />
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </center>
+                    <p:messages id="messages" showDetail="true" style="right: 90px;top: 20px; position:absolute;height: 60px;
+                                width: 300px; font-size:medium; padding-left: auto;">
+                        <p:autoUpdate/>
+                    </p:messages>
+                    <br></br>
+
+                    <center>
+                        <div class="veículo">
+                            <h:form>
+                                <div class="ui-fluid p-formgrid p-grid">
+                                    <div class="p-field p-col-12 p-md-4">
+                                        <p:outputLabel for="@next" value=""/>
+                                        <p:selectOneMenu id="option" value="#{tabelaBean.modelo}">
+                                            <f:selectItem itemLabel="Modelo" itemValue="#{null}"/>
+                                            <f:selectItem itemLabel="Agile" itemValue="Agile"/>
+                                            <f:selectItem itemLabel="Celta" itemValue="Celta"/>
+                                            <f:selectItem itemLabel="Montana" itemValue="Montana"/>
+                                            <f:selectItem itemLabel="Onix" itemValue="Onix"/>
+                                            <f:selectItem itemLabel="Prisma" itemValue="Prisma"/>
+                                            <f:selectItem itemLabel="S10" itemValue="S10"/>
+                                            <p:ajax update="@this" />
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </center>
+
+                    <br></br>
+
+                    <center>
+                        <div class="ano">
+                            <h:form>
+                                <div class="ui-fluid p-formgrid p-grid">
+                                    <div class="p-field p-col-12 p-md-4">
+                                        <p:outputLabel for="@next" value=""/>
+                                        <p:selectOneMenu id="option" value="#{tabelaBean.ano}">
+                                            <f:selectItem itemLabel="Ano do veículo" itemValue="#{null}"/>
+                                            <f:selectItem itemLabel="2013" itemValue="2013"/>
+                                            <f:selectItem itemLabel="2014" itemValue="2014"/>
+                                            <f:selectItem itemLabel="2015" itemValue="2015"/>
+                                            <f:selectItem itemLabel="2016" itemValue="2016"/>
+                                            <f:selectItem itemLabel="2017" itemValue="2017"/>
+                                            <f:selectItem itemLabel="2018" itemValue="2018"/>
+                                            <f:selectItem itemLabel="2019" itemValue="2019"/>
+                                            <f:selectItem itemLabel="2020" itemValue="2020"/>
+                                            <f:selectItem itemLabel="2021" itemValue="2021"/>
+                                            <f:selectItem itemLabel="2022" itemValue="2022"/>
+                                            <p:ajax update="@this" />
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </center>
+
+                    <br></br>
+
+                    <center>
+                        <div class="potência">
+                            <h:form>
+                                <div class="ui-fluid p-formgrid p-grid">
+                                    <div class="p-field p-col-12 p-md-4">
+                                        <p:outputLabel for="@next" value=""/>
+                                        <p:selectOneMenu id="option" value="#{tabelaBean.potenciaMotor}">
+                                            <f:selectItem itemLabel="Potência" itemValue="#{null}"/>
+                                            <f:selectItem itemLabel="1.0" itemValue="1.0"/>
+                                            <f:selectItem itemLabel="1.4" itemValue="1.4"/>
+                                            <f:selectItem itemLabel="1.6" itemValue="1.6"/>
+                                            <f:selectItem itemLabel="1.8" itemValue="1.8"/>
+                                            <f:selectItem itemLabel="2.0" itemValue="2.0"/>
+                                            <f:selectItem itemLabel="2.4" itemValue="2.4"/>
+                                            <f:selectItem itemLabel="2.5" itemValue="2.5"/>
+                                            <p:ajax update="@this" />
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </center>
+
+                    <br></br>
+
+                    <center>
+                        <div class="válvula">
+                            <h:form>
+                                <div class="ui-fluid p-formgrid p-grid">
+                                    <div class="p-field p-col-12 p-md-4">
+                                        <p:outputLabel for="@next" value=""/>
+                                        <p:selectOneMenu id="option" value="#{tabelaBean.valvulasMotor}">
+                                            <f:selectItem itemLabel="Válvulas" itemValue="#{null}"/>
+                                            <f:selectItem itemLabel="8" itemValue="8"/>
+                                            <f:selectItem itemLabel="12" itemValue="12"/>
+                                            <f:selectItem itemLabel="16" itemValue="16"/>
+                                            <f:selectItem itemLabel="20" itemValue="20"/>
+                                            <p:ajax update="@this" />
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </center>
+
+                    <br></br>
+
+
+                    <center>
+                        <div class="motor">
+                            <h:form>
+                                <div class="ui-fluid p-formgrid p-grid">
+                                    <div class="p-field p-col-12 p-md-4">
+                                        <p:outputLabel for="@next" value=""/>
+                                        <p:selectOneMenu id="option" value="#{tabelaBean.tipoMotor}">
+                                            <f:selectItem itemLabel="Motor" itemValue="#{null}"/>
+                                            <f:selectItem itemLabel="Econo.Flex" itemValue="Econo.Flex"/>
+                                            <f:selectItem itemLabel="Econo.Flex Easytronic" itemValue="Econo.Flex Easytronic"/>
+                                            <f:selectItem itemLabel="Ecotec S.I.D.I Flex" itemValue="Ecotec S.I.D.I Flex"/>
+                                            <f:selectItem itemLabel="Flex" itemValue="Flex"/>
+                                            <f:selectItem itemLabel="FlexPower" itemValue="FlexPower"/>
+                                            <f:selectItem itemLabel="SPE/4 ECO Flex" itemValue="SPE/4 ECO Flex"/>
+                                            <f:selectItem itemLabel="SPE/4 Flex" itemValue="SPE/4 Flex"/>
+                                            <f:selectItem itemLabel="Turbo Flex" itemValue="Turbo Flex"/>
+                                            <f:selectItem itemLabel="VHCE FlexPower" itemValue="VHCE FlexPower"/>
+                                            <p:ajax update="@this" />
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </center>
+
+                    <br></br>
+
+                    <center>
+                        <div class="cilindradas">
+                            <h:form>
+                                <div class="ui-fluid p-formgrid p-grid">
+                                    <div class="p-field p-col-12 p-md-4">
+                                        <p:outputLabel for="@next" value=""/>
+                                        <p:selectOneMenu id="option" value="#{tabelaBean.cilindradasMotor}">
+                                            <f:selectItem itemLabel="Cilindradas" itemValue="#{null}"/>
+                                            <f:selectItem itemLabel="77/78" itemValue="77/78cv"/>
+                                            <f:selectItem itemLabel="78/80" itemValue="78/80cv"/>
+                                            <f:selectItem itemLabel="78/82" itemValue="78/82cv"/>
+                                            <f:selectItem itemLabel="94/99" itemValue="94/99cv"/>
+                                            <f:selectItem itemLabel="97/102" itemValue="97/102cv"/>
+                                            <f:selectItem itemLabel="98/106" itemValue="98/106cv"/>
+                                            <f:selectItem itemLabel="116/116" itemValue="116/116cv"/>
+                                            <f:selectItem itemLabel="141/147" itemValue="141/147cv"/>
+                                            <f:selectItem itemLabel="197/206" itemValue="197/206cv"/>
+                                            <p:ajax update="@this" />
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+                            </h:form>
+                        </div>
+                    </center>
+                </div>
+            </center>
+
+            <center>
+                <h:form id="form1">
+                    <br></br>
+                    <p:commandButton style="margin-right: 30px;" id="voltar" value="Voltar" action="#{tabelaBean.doVoltar}" ajax="false"></p:commandButton>
+                    <p:commandButton value="Confirmar" id="confirmar" actionListener="#{tabelaBean.retorno()}" process="@this" update="form1:carro" ajax="false" ></p:commandButton>
+                </h:form>
+            </center>
+        </div>
+    </h:body>
+    <br></br>
+    <footer>
+        <center>
+            <h:form id="form2" >
+                <br></br>
+                <p:dataTable id="carro" var="car" value="#{tabelaBean.listaTabelaCarro}" rowKey="#{car.carroid}">
+
+                    <p:column headerText="Montadora">
+                        <h:outputText value="#{car.montadora}" />
+                    </p:column>
+                    <p:column headerText="Modelo">
+                        <h:outputText value="#{car.modelo}" />
+                    </p:column>
+                    <p:column headerText="Ano">
+                        <h:outputText value="#{car.ano}" />
+                    </p:column>
+                    <p:column headerText="Potência Motor">
+                        <h:outputText value="#{car.potenciaMotor}" />
+                    </p:column>
+                    <p:column headerText="Válvulas">
+                        <h:outputText value="#{car.valvulasMotor}" />
+                    </p:column>
+                    <p:column headerText="Tipo Motor">
+                        <h:outputText value="#{car.tipoMotor}" />
+                    </p:column>
+                    <p:column headerText="Cilindradas">
+                        <h:outputText value="#{car.cilindradasMotor}" />
+                    </p:column>
+                    <p:column headerText="Litros Óleo">
+                        <h:outputText value="#{car.litrosOleo}" />
+                    </p:column>
+                    <p:column headerText="Viscosidade">
+                        <h:outputText value="#{car.viscosidadeOleo}" />
+                    </p:column>
+                    <p:column headerText="Filtro Óleo">
+                        <h:outputText value="#{car.filtrooleo}" />
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </center>
+    </footer>
+</html>

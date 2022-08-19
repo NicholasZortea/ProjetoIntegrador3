@@ -1,0 +1,26 @@
+h1{
+    padding-top: 20px;
+    text-align: center;
+}
+
+button.ui-button {
+    width: 185px;
+}
+
+.selectMenu{
+    width: 400px;
+}
+
+#tabelaInteira {
+    width:500px;
+    height: 700px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    margin: 10px 5px;
+    padding: 4px;
+    margin-top: 35px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: white;
+    box-shadow: 3px 3px 3px lightgray;
+}
