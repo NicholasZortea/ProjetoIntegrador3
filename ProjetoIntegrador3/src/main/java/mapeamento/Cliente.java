@@ -12,8 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import org.antlr.v4.runtime.misc.NotNull;
 
 /**
  *
@@ -21,40 +21,38 @@ import org.antlr.v4.runtime.misc.NotNull;
  */
 @Entity
 @Table(name = "CLIENTES")
-public class Clientes implements Serializable{
-    
+public class Cliente implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CLIENTE_SEQ")
     @SequenceGenerator(name = "CLIENTE_SEQ", sequenceName = "CLIENTE_SEQ", allocationSize = 1)
     @Column(name = "CLI_ID")
     private Integer cliId;
-    
+
     @NotNull
     @Size(max = 150)
     @Column(name = "CLI_NOME")
     private String cliNome;
-    
+
     @NotNull
     @Size(max = 14)
     @Column(name = "CLI_CPF")
     private String cliCpf;
-    
+
     @NotNull
     @Column(name = "CLI_TELEFONE")
     private int cliTelefone;
-    
+
     @Size(max = 100)
     @Column(name = "CLI_EMAIL")
     private String cliEmail;
-    
+
     @NotNull
     @JoinColumn(name = "CLI_CIDCOD", referencedColumnName = "CID_COD")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Cidade clidCidCod ;
-    
-    
+    private Cidade clidCidCod;
 
-    public Clientes(Integer cliId, String cliNome, String cliCpf, int cliTelefone,Cidade clidCidCod) {
+    public Cliente(Integer cliId, String cliNome, String cliCpf, int cliTelefone, Cidade clidCidCod) {
         this.cliId = cliId;
         this.cliNome = cliNome;
         this.cliCpf = cliCpf;
@@ -133,7 +131,7 @@ public class Clientes implements Serializable{
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Clientes other = (Clientes) obj;
+        final Cliente other = (Cliente) obj;
         if (this.cliTelefone != other.cliTelefone) {
             return false;
         }
@@ -151,5 +149,5 @@ public class Clientes implements Serializable{
         }
         return Objects.equals(this.clidCidCod, other.clidCidCod);
     }
-    
+
 }
