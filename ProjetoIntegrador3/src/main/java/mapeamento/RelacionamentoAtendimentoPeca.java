@@ -32,54 +32,54 @@ public class RelacionamentoAtendimentoPeca implements Serializable{
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RELACIONAMENTOPECA_SEQ")
     @SequenceGenerator(name = "RELACIONAMENTOPECA_SEQ", sequenceName = "RELACIONAMENTOPECA_SEQ", allocationSize = 1)
     @Column(name = "RELACIONAMENTO_ATENDIMENTOPECA")
-    private Integer relacionamentoAtendimentoPeca;
+    private Integer relacAtendPeca;
     
     @NotNull
     @JoinColumn(name = "RELACIONAMENTO_ATENDCOD", referencedColumnName = "ATEND_COD")
     @ManyToMany(fetch = FetchType.LAZY)
-    private Atendimento relacionamentoAtendCod;
+    private Atendimento relacAtendCod;
     
     @NotNull
     @JoinColumn(name = "RELACIONAMENTO_PECACOD", referencedColumnName = "PECA_COD")
     @ManyToMany(fetch = FetchType.LAZY)
-    private Peca relacionamentoPecaCod;
+    private Peca relacPecaCod;
 
-    public RelacionamentoAtendimentoPeca(Integer relacionamentoAtendimentoPeca, Atendimento relacionamentoAtendCod, Peca relacionamentoPecaCod) {
-        this.relacionamentoAtendimentoPeca = relacionamentoAtendimentoPeca;
-        this.relacionamentoAtendCod = relacionamentoAtendCod;
-        this.relacionamentoPecaCod = relacionamentoPecaCod;
+    public RelacionamentoAtendimentoPeca(Integer relacAtendPeca, Atendimento relacAtendCod, Peca relacPecaCod) {
+        this.relacAtendPeca = relacAtendPeca;
+        this.relacAtendCod = relacAtendCod;
+        this.relacPecaCod = relacPecaCod;
     }
 
-    public Integer getRelacionamentoAtendimentoPeca() {
-        return relacionamentoAtendimentoPeca;
+    public Integer getRelacAtendPeca() {
+        return relacAtendPeca;
     }
 
-    public void setRelacionamentoAtendimentoPeca(Integer relacionamentoAtendimentoPeca) {
-        this.relacionamentoAtendimentoPeca = relacionamentoAtendimentoPeca;
+    public void setRelacAtendPeca(Integer relacAtendPeca) {
+        this.relacAtendPeca = relacAtendPeca;
     }
 
-    public Atendimento getRelacionamentoAtendCod() {
-        return relacionamentoAtendCod;
+    public Atendimento getRelacAtendCod() {
+        return relacAtendCod;
     }
 
-    public void setRelacionamentoAtendCod(Atendimento relacionamentoAtendCod) {
-        this.relacionamentoAtendCod = relacionamentoAtendCod;
+    public void setRelacAtendCod(Atendimento relacAtendCod) {
+        this.relacAtendCod = relacAtendCod;
     }
 
-    public Peca getRelacionamentoPecaCod() {
-        return relacionamentoPecaCod;
+    public Peca getRelacPecaCod() {
+        return relacPecaCod;
     }
 
-    public void setRelacionamentoPecaCod(Peca relacionamentoPecaCod) {
-        this.relacionamentoPecaCod = relacionamentoPecaCod;
+    public void setRelacPecaCod(Peca relacPecaCod) {
+        this.relacPecaCod = relacPecaCod;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.relacionamentoAtendimentoPeca);
-        hash = 37 * hash + Objects.hashCode(this.relacionamentoAtendCod);
-        hash = 37 * hash + Objects.hashCode(this.relacionamentoPecaCod);
+        int hash = 5;
+        hash = 97 * hash + Objects.hashCode(this.relacAtendPeca);
+        hash = 97 * hash + Objects.hashCode(this.relacAtendCod);
+        hash = 97 * hash + Objects.hashCode(this.relacPecaCod);
         return hash;
     }
 
@@ -95,17 +95,19 @@ public class RelacionamentoAtendimentoPeca implements Serializable{
             return false;
         }
         final RelacionamentoAtendimentoPeca other = (RelacionamentoAtendimentoPeca) obj;
-        if (!Objects.equals(this.relacionamentoAtendimentoPeca, other.relacionamentoAtendimentoPeca)) {
+        if (!Objects.equals(this.relacAtendPeca, other.relacAtendPeca)) {
             return false;
         }
-        if (!Objects.equals(this.relacionamentoAtendCod, other.relacionamentoAtendCod)) {
+        if (!Objects.equals(this.relacAtendCod, other.relacAtendCod)) {
             return false;
         }
-        if (!Objects.equals(this.relacionamentoPecaCod, other.relacionamentoPecaCod)) {
+        if (!Objects.equals(this.relacPecaCod, other.relacPecaCod)) {
             return false;
         }
         return true;
     }
+
+    
     
     
     
