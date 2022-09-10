@@ -16,8 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import org.antlr.v4.runtime.misc.NotNull;
 
 /**
  *
@@ -46,14 +46,14 @@ public class Funcionario implements Serializable{
     @NotNull
     @Size(max = 11)
     @Column(name = "FUNC_TELEFONE")
-    private String funcTelefone;
+    private int funcTelefone;
     
     @NotNull
     @JoinColumn(name = "FUNC_CIDCOD", referencedColumnName = "CID_COD")
     @ManyToOne(fetch = FetchType.LAZY)
-    private Cidade funcCidCod ;
+    private Cidade funcCidCod;
 
-    public Funcionario(Integer funcId, String funcNome, String funcCpf, String funcTelefone, Cidade funcCidCod) {
+    public Funcionario(Integer funcId, String funcNome, String funcCpf, int funcTelefone, Cidade funcCidCod) {
         this.funcId = funcId;
         this.funcNome = funcNome;
         this.funcCpf = funcCpf;
@@ -85,11 +85,11 @@ public class Funcionario implements Serializable{
         this.funcCpf = funcCpf;
     }
 
-    public String getFuncTelefone() {
+    public int getFuncTelefone() {
         return funcTelefone;
     }
 
-    public void setFuncTelefone(String funcTelefone) {
+    public void setFuncTelefone(int funcTelefone) {
         this.funcTelefone = funcTelefone;
     }
 
@@ -103,12 +103,12 @@ public class Funcionario implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + Objects.hashCode(this.funcId);
-        hash = 97 * hash + Objects.hashCode(this.funcNome);
-        hash = 97 * hash + Objects.hashCode(this.funcCpf);
-        hash = 97 * hash + Objects.hashCode(this.funcTelefone);
-        hash = 97 * hash + Objects.hashCode(this.funcCidCod);
+        int hash = 7;
+        hash = 83 * hash + Objects.hashCode(this.funcId);
+        hash = 83 * hash + Objects.hashCode(this.funcNome);
+        hash = 83 * hash + Objects.hashCode(this.funcCpf);
+        hash = 83 * hash + this.funcTelefone;
+        hash = 83 * hash + Objects.hashCode(this.funcCidCod);
         return hash;
     }
 
@@ -124,13 +124,13 @@ public class Funcionario implements Serializable{
             return false;
         }
         final Funcionario other = (Funcionario) obj;
+        if (this.funcTelefone != other.funcTelefone) {
+            return false;
+        }
         if (!Objects.equals(this.funcNome, other.funcNome)) {
             return false;
         }
         if (!Objects.equals(this.funcCpf, other.funcCpf)) {
-            return false;
-        }
-        if (!Objects.equals(this.funcTelefone, other.funcTelefone)) {
             return false;
         }
         if (!Objects.equals(this.funcId, other.funcId)) {
@@ -142,8 +142,9 @@ public class Funcionario implements Serializable{
         return true;
     }
 
-
     
+
+  
     
     
 }
