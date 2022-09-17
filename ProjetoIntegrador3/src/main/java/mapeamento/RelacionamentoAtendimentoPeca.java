@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mapeamento;
 
 import java.io.Serializable;
@@ -15,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -26,19 +20,19 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "RELACIONAMENTO_ATENDIMENTOPECA")
-public class RelacionamentoAtendimentoPeca implements Serializable{
-    
-     @Id
+public class RelacionamentoAtendimentoPeca implements Serializable {
+
+    @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "RELACIONAMENTOPECA_SEQ")
     @SequenceGenerator(name = "RELACIONAMENTOPECA_SEQ", sequenceName = "RELACIONAMENTOPECA_SEQ", allocationSize = 1)
     @Column(name = "RELACIONAMENTO_ATENDIMENTOPECA")
     private Integer relacAtendPeca;
-    
+
     @NotNull
     @JoinColumn(name = "RELACIONAMENTO_ATENDCOD", referencedColumnName = "ATEND_COD")
     @ManyToMany(fetch = FetchType.LAZY)
     private Atendimento relacAtendCod;
-    
+
     @NotNull
     @JoinColumn(name = "RELACIONAMENTO_PECACOD", referencedColumnName = "PECA_COD")
     @ManyToMany(fetch = FetchType.LAZY)
@@ -106,9 +100,4 @@ public class RelacionamentoAtendimentoPeca implements Serializable{
         }
         return true;
     }
-
-    
-    
-    
-    
 }
