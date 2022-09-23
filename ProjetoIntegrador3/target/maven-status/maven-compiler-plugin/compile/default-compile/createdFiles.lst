@@ -1,1 +1,14 @@
+mapeamento\Funcionario.class
+mapeamento\Peca.class
+menu\bean\CarroService.class
+mapeamento\Cidade.class
+mapeamento\Atendimento.class
 menu\bean\Dao.class
+mapeamento\Modelo.class
+mapeamento\Servico.class
+mapeamento\Atendimentoxpeca.class
+mapeamento\Marca.class
+mapeamento\Atendimentoxfuncionario.class
+beans\CarroBean.class
+mapeamento\Cliente.class
+mapeamento\Carro.class

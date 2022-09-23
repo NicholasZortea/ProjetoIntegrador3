@@ -1,64 +1,65 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mapeamento;
+
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
  *
- * @author Matheus
+ * @author Mecanica
  */
 @Entity
 @Table(name = "FUNCIONARIO")
-public class Funcionario implements Serializable{
-    
+public class Funcionario implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "FUNCIONARIO_SEQ")
-    @SequenceGenerator(name = "FUNCIONARIO_SEQ", sequenceName = "FUNCIONARIO_SEQ", allocationSize = 1)
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "FUNC_ID")
     private Integer funcId;
-    
+    @Basic(optional = false)
     @NotNull
-    @Size(max = 150)
+    @Size(min = 1, max = 150)
     @Column(name = "FUNC_NOME")
     private String funcNome;
-    
+    @Basic(optional = false)
     @NotNull
-    @Size(max = 14)
+    @Size(min = 1, max = 14)
     @Column(name = "FUNC_CPF")
     private String funcCpf;
-    
+    @Basic(optional = false)
     @NotNull
-    @Size(max = 11)
     @Column(name = "FUNC_TELEFONE")
     private int funcTelefone;
-    
-    @NotNull
     @JoinColumn(name = "FUNC_CIDCOD", referencedColumnName = "CID_COD")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Cidade funcCidCod;
+    @ManyToOne(optional = false)
+    private Cidade funcCidcod;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "atendxfuncid")
+    private List<Atendimentoxfuncionario> atendimentoxfuncionarioList;
 
-    public Funcionario(Integer funcId, String funcNome, String funcCpf, int funcTelefone, Cidade funcCidCod) {
+    public Funcionario() {
+    }
+
+    public Funcionario(Integer funcId) {
+        this.funcId = funcId;
+    }
+
+    public Funcionario(Integer funcId, String funcNome, String funcCpf, int funcTelefone) {
         this.funcId = funcId;
         this.funcNome = funcNome;
         this.funcCpf = funcCpf;
         this.funcTelefone = funcTelefone;
-        this.funcCidCod = funcCidCod;
     }
 
     public Integer getFuncId() {
@@ -93,58 +94,45 @@ public class Funcionario implements Serializable{
         this.funcTelefone = funcTelefone;
     }
 
-    public Cidade getFuncCidCod() {
-        return funcCidCod;
+    public Cidade getFuncCidcod() {
+        return funcCidcod;
     }
 
-    public void setFuncCidCod(Cidade funcCidCod) {
-        this.funcCidCod = funcCidCod;
+    public void setFuncCidcod(Cidade funcCidcod) {
+        this.funcCidcod = funcCidcod;
+    }
+
+    public List<Atendimentoxfuncionario> getAtendimentoxfuncionarioList() {
+        return atendimentoxfuncionarioList;
+    }
+
+    public void setAtendimentoxfuncionarioList(List<Atendimentoxfuncionario> atendimentoxfuncionarioList) {
+        this.atendimentoxfuncionarioList = atendimentoxfuncionarioList;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 83 * hash + Objects.hashCode(this.funcId);
-        hash = 83 * hash + Objects.hashCode(this.funcNome);
-        hash = 83 * hash + Objects.hashCode(this.funcCpf);
-        hash = 83 * hash + this.funcTelefone;
-        hash = 83 * hash + Objects.hashCode(this.funcCidCod);
+        int hash = 0;
+        hash += (funcId != null ? funcId.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Funcionario)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Funcionario other = (Funcionario) obj;
-        if (this.funcTelefone != other.funcTelefone) {
-            return false;
-        }
-        if (!Objects.equals(this.funcNome, other.funcNome)) {
-            return false;
-        }
-        if (!Objects.equals(this.funcCpf, other.funcCpf)) {
-            return false;
-        }
-        if (!Objects.equals(this.funcId, other.funcId)) {
-            return false;
-        }
-        if (!Objects.equals(this.funcCidCod, other.funcCidCod)) {
+        Funcionario other = (Funcionario) object;
+        if ((this.funcId == null && other.funcId != null) || (this.funcId != null && !this.funcId.equals(other.funcId))) {
             return false;
         }
         return true;
     }
 
-    
-
-  
-    
+    @Override
+    public String toString() {
+        return "mapeamento.Funcionario[ funcId=" + funcId + " ]";
+    }
     
 }

@@ -1,58 +1,57 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mapeamento;
 
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
  *
- * @author Matheus
+ * @author Mecanica
  */
 @Entity
 @Table(name = "CARRO")
-public class Carro implements Serializable{
+public class Carro implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CARRO_SEQ")
-    @SequenceGenerator(name = "CARRO_SEQ", sequenceName = "CARRO_SEQ", allocationSize = 1)
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 7)
     @Column(name = "CAR_PLACA")
     private String carPlaca;
-    
+    @Basic(optional = false)
     @NotNull
-    @Size(max = 4)
-    @Column(name = "CLI_NOME")
-    private int carAnoFabric;
-    
-    @NotNull
-    @JoinColumn(name = "CAR_MODCOD", referencedColumnName = "MOD_COD")
-    @OneToOne(fetch = FetchType.LAZY)
-    private Modelo carModCod;
-
-@NotNull
+    @Column(name = "CAR_ANOFABRIC")
+    private int carAnofabric;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "atendCarplaca")
+    private List<Atendimento> atendimentoList;
     @JoinColumn(name = "CAR_CLIID", referencedColumnName = "CLI_ID")
-    @OneToOne(fetch = FetchType.LAZY)
-    private Cliente carCliID;
+    @ManyToOne(optional = false)
+    private Cliente carCliid;
+    @JoinColumn(name = "CAR_MODCOD", referencedColumnName = "MOD_COD")
+    @ManyToOne(optional = false)
+    private Modelo carModcod;
 
-    public Carro(String carPlaca, int carAnoFabric, Modelo carModCod, Cliente carCliID) {
+    public Carro() {
+    }
+
+    public Carro(String carPlaca) {
         this.carPlaca = carPlaca;
-        this.carAnoFabric = carAnoFabric;
-        this.carModCod = carModCod;
-        this.carCliID = carCliID;
+    }
+
+    public Carro(String carPlaca, int carAnofabric) {
+        this.carPlaca = carPlaca;
+        this.carAnofabric = carAnofabric;
     }
 
     public String getCarPlaca() {
@@ -63,67 +62,61 @@ public class Carro implements Serializable{
         this.carPlaca = carPlaca;
     }
 
-    public int getCarAnoFabric() {
-        return carAnoFabric;
+    public int getCarAnofabric() {
+        return carAnofabric;
     }
 
-    public void setCarAnoFabric(int carAnoFabric) {
-        this.carAnoFabric = carAnoFabric;
+    public void setCarAnofabric(int carAnofabric) {
+        this.carAnofabric = carAnofabric;
     }
 
-    public Modelo getCarModCod() {
-        return carModCod;
+    public List<Atendimento> getAtendimentoList() {
+        return atendimentoList;
     }
 
-    public void setCarModCod(Modelo carModCod) {
-        this.carModCod = carModCod;
+    public void setAtendimentoList(List<Atendimento> atendimentoList) {
+        this.atendimentoList = atendimentoList;
     }
 
-    public Cliente getCarCliID() {
-        return carCliID;
+    public Cliente getCarCliid() {
+        return carCliid;
     }
 
-    public void setCarCliID(Cliente carCliID) {
-        this.carCliID = carCliID;
+    public void setCarCliid(Cliente carCliid) {
+        this.carCliid = carCliid;
+    }
+
+    public Modelo getCarModcod() {
+        return carModcod;
+    }
+
+    public void setCarModcod(Modelo carModcod) {
+        this.carModcod = carModcod;
     }
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.carPlaca);
-        hash = 37 * hash + this.carAnoFabric;
-        hash = 37 * hash + Objects.hashCode(this.carModCod);
-        hash = 37 * hash + Objects.hashCode(this.carCliID);
+        int hash = 0;
+        hash += (carPlaca != null ? carPlaca.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Carro)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Carro other = (Carro) obj;
-        if (this.carAnoFabric != other.carAnoFabric) {
-            return false;
-        }
-        if (!Objects.equals(this.carPlaca, other.carPlaca)) {
-            return false;
-        }
-        if (!Objects.equals(this.carModCod, other.carModCod)) {
-            return false;
-        }
-        if (!Objects.equals(this.carCliID, other.carCliID)) {
+        Carro other = (Carro) object;
+        if ((this.carPlaca == null && other.carPlaca != null) || (this.carPlaca != null && !this.carPlaca.equals(other.carPlaca))) {
             return false;
         }
         return true;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "mapeamento.Carro[ carPlaca=" + carPlaca + " ]";
+    }
+    
 }

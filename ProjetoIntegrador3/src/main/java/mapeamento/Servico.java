@@ -1,40 +1,45 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mapeamento;
 
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
  *
- * @author Matheus
+ * @author Mecanica
  */
 @Entity
 @Table(name = "SERVICO")
-public class Servico implements Serializable{
-    
+public class Servico implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SERVICO_SEQ")
-    @SequenceGenerator(name = "SERVICO_SEQ", sequenceName = "SERVICO_SEQ", allocationSize = 1)
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "SERV_COD")
     private Integer servCod;
-    
+    @Basic(optional = false)
     @NotNull
-    @Size(max = 50)
+    @Size(min = 1, max = 50)
     @Column(name = "SERV_TIPO")
     private String servTipo;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "atendServcod")
+    private List<Atendimento> atendimentoList;
+
+    public Servico() {
+    }
+
+    public Servico(Integer servCod) {
+        this.servCod = servCod;
+    }
 
     public Servico(Integer servCod, String servTipo) {
         this.servCod = servCod;
@@ -57,37 +62,37 @@ public class Servico implements Serializable{
         this.servTipo = servTipo;
     }
 
+    public List<Atendimento> getAtendimentoList() {
+        return atendimentoList;
+    }
+
+    public void setAtendimentoList(List<Atendimento> atendimentoList) {
+        this.atendimentoList = atendimentoList;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 73 * hash + Objects.hashCode(this.servCod);
-        hash = 73 * hash + Objects.hashCode(this.servTipo);
+        int hash = 0;
+        hash += (servCod != null ? servCod.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Servico)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Servico other = (Servico) obj;
-        if (!Objects.equals(this.servTipo, other.servTipo)) {
-            return false;
-        }
-        if (!Objects.equals(this.servCod, other.servCod)) {
+        Servico other = (Servico) object;
+        if ((this.servCod == null && other.servCod != null) || (this.servCod != null && !this.servCod.equals(other.servCod))) {
             return false;
         }
         return true;
     }
-    
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "mapeamento.Servico[ servCod=" + servCod + " ]";
+    }
     
 }

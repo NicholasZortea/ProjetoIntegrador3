@@ -1,56 +1,59 @@
 package mapeamento;
 
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.List;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
  *
- * @author Gabriel
+ * @author Mecanica
  */
 @Entity
 @Table(name = "ATENDIMENTO")
 public class Atendimento implements Serializable {
 
+    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ATENDIMENTO_SEQ")
-    @SequenceGenerator(name = "ATENDIMENTO_SEQ", sequenceName = "ATENDIMENTO_SEQ", allocationSize = 1)
+    @Basic(optional = false)
+    @NotNull
     @Column(name = "ATEND_COD")
     private Integer atendCod;
-
+    @Basic(optional = false)
     @NotNull
-    @Size(max = 6)
+    @Size(min = 1, max = 6)
     @Column(name = "ATEND_KM")
-    private String atendNome;
-
-    @NotNull
+    private String atendKm;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "relacionamentoAtendcod")
+    private List<Atendimentoxpeca> atendimentoxpecaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "atendxcod")
+    private List<Atendimentoxfuncionario> atendimentoxfuncionarioList;
+    @JoinColumn(name = "ATEND_CARPLACA", referencedColumnName = "CAR_PLACA")
+    @ManyToOne(optional = false)
+    private Carro atendCarplaca;
     @JoinColumn(name = "ATEND_SERVCOD", referencedColumnName = "SERV_COD")
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     private Servico atendServcod;
 
-    @NotNull
-    @Size(max = 7)
-    @JoinColumn(name = "ATEND_CARPLACA", referencedColumnName = "CAR_PLACA")
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Carro atendCarPlaca;
+    public Atendimento() {
+    }
 
-    public Atendimento(Integer atendCod, String atendNome, Servico atendServcod, Carro atendCarPlaca) {
+    public Atendimento(Integer atendCod) {
         this.atendCod = atendCod;
-        this.atendNome = atendNome;
-        this.atendServcod = atendServcod;
-        this.atendCarPlaca = atendCarPlaca;
+    }
+
+    public Atendimento(Integer atendCod, String atendKm) {
+        this.atendCod = atendCod;
+        this.atendKm = atendKm;
     }
 
     public Integer getAtendCod() {
@@ -61,12 +64,36 @@ public class Atendimento implements Serializable {
         this.atendCod = atendCod;
     }
 
-    public String getAtendNome() {
-        return atendNome;
+    public String getAtendKm() {
+        return atendKm;
     }
 
-    public void setAtendNome(String atendNome) {
-        this.atendNome = atendNome;
+    public void setAtendKm(String atendKm) {
+        this.atendKm = atendKm;
+    }
+
+    public List<Atendimentoxpeca> getAtendimentoxpecaList() {
+        return atendimentoxpecaList;
+    }
+
+    public void setAtendimentoxpecaList(List<Atendimentoxpeca> atendimentoxpecaList) {
+        this.atendimentoxpecaList = atendimentoxpecaList;
+    }
+
+    public List<Atendimentoxfuncionario> getAtendimentoxfuncionarioList() {
+        return atendimentoxfuncionarioList;
+    }
+
+    public void setAtendimentoxfuncionarioList(List<Atendimentoxfuncionario> atendimentoxfuncionarioList) {
+        this.atendimentoxfuncionarioList = atendimentoxfuncionarioList;
+    }
+
+    public Carro getAtendCarplaca() {
+        return atendCarplaca;
+    }
+
+    public void setAtendCarplaca(Carro atendCarplaca) {
+        this.atendCarplaca = atendCarplaca;
     }
 
     public Servico getAtendServcod() {
@@ -77,46 +104,29 @@ public class Atendimento implements Serializable {
         this.atendServcod = atendServcod;
     }
 
-    public Carro getAtendCarPlaca() {
-        return atendCarPlaca;
-    }
-
-    public void setAtendCarPlaca(Carro atendCarPlaca) {
-        this.atendCarPlaca = atendCarPlaca;
-    }
-
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 43 * hash + Objects.hashCode(this.atendCod);
-        hash = 43 * hash + Objects.hashCode(this.atendNome);
-        hash = 43 * hash + Objects.hashCode(this.atendServcod);
-        hash = 43 * hash + Objects.hashCode(this.atendCarPlaca);
+        int hash = 0;
+        hash += (atendCod != null ? atendCod.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
+    public boolean equals(Object object) {
+        // TODO: Warning - this method won't work in the case the id fields are not set
+        if (!(object instanceof Atendimento)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        Atendimento other = (Atendimento) object;
+        if ((this.atendCod == null && other.atendCod != null) || (this.atendCod != null && !this.atendCod.equals(other.atendCod))) {
             return false;
         }
-        final Atendimento other = (Atendimento) obj;
-        if (!Objects.equals(this.atendNome, other.atendNome)) {
-            return false;
-        }
-        if (!Objects.equals(this.atendCod, other.atendCod)) {
-            return false;
-        }
-        if (!Objects.equals(this.atendServcod, other.atendServcod)) {
-            return false;
-        }
-        return Objects.equals(this.atendCarPlaca, other.atendCarPlaca);
+        return true;
     }
 
+    @Override
+    public String toString() {
+        return "mapeamento.Atendimento[ atendCod=" + atendCod + " ]";
+    }
+    
 }
