@@ -1,10 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package beans;
 
 import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import mapeamento.Carro;
 import menu.bean.CarroService;
@@ -20,12 +17,9 @@ public class CarroBean implements Serializable {
 
     private Carro carro;
 
-    public CarroService getCarroService() {
-        return carroService;
-    }
-
-    public void setCarroService(CarroService carroService) {
-        this.carroService = carroService;
+    @PostConstruct
+    private void init() {
+        Carro carro = new Carro();
     }
 
     public void salvar() {

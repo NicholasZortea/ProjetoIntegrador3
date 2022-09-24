@@ -6,10 +6,11 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -24,8 +25,8 @@ public class Cliente implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CLIENTE_SEQ")
+    @SequenceGenerator(name = "CLIENTE_SEQ", sequenceName = "CLIENTE_SEQ", allocationSize = 1)
     @Column(name = "CLI_ID")
     private Integer cliId;
     @Basic(optional = false)
@@ -45,9 +46,6 @@ public class Cliente implements Serializable {
     @Size(max = 100)
     @Column(name = "CLI_EMAIL")
     private String cliEmail;
-    @JoinColumn(name = "CLI_CIDCOD", referencedColumnName = "CID_COD")
-    @ManyToOne(optional = false)
-    private Cidade cliCidcod;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "carCliid")
     private List<Carro> carroList;
 
@@ -105,14 +103,6 @@ public class Cliente implements Serializable {
         this.cliEmail = cliEmail;
     }
 
-    public Cidade getCliCidcod() {
-        return cliCidcod;
-    }
-
-    public void setCliCidcod(Cidade cliCidcod) {
-        this.cliCidcod = cliCidcod;
-    }
-
     public List<Carro> getCarroList() {
         return carroList;
     }
@@ -145,5 +135,5 @@ public class Cliente implements Serializable {
     public String toString() {
         return "mapeamento.Cliente[ cliId=" + cliId + " ]";
     }
-    
+
 }

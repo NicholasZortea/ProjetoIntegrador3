@@ -1,12 +1,33 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
-        <title>Tabela de Informação Técnica</title>
     </h:head>
     <h:body>
         <h:outputText value=" Cadastro Carro"/>
+        <h:form id="form1">
+            <p:panel id="cadastroCliente" header="Informações">
+                <p:panelGrid columns="2" layout="grid">
+                    <p:panelGrid columns="1" layout="grid">
+                        <p:outputLabel value="Cliente Nome"/>
+                        <p:inputText id="nome" value="#{clienteBean.nome}"/>
+                        <p:outputLabel value="CPF"/>
+                        <p:inputText id="cpf" value="#{clienteBean.cpf}" maxlength="14"/>
+                        <p:outputLabel value="Telefone"/>
+                        <p:inputText id="telefone" value="#{clienteBean.telefone}" maxlength="11"/>
+                        <p:outputLabel value="E-mail"/>
+                        <p:inputText id="email" value="#{clienteBean.email}"/>
+                        <p:commandButton value="Icon Right" icon="pi pi-check" iconPos="right" action="#{clienteBean.salvar()}" />
+
+
+                    </p:panelGrid>
+                </p:panelGrid>
+
+            </p:panel>
+        </h:form>
     </h:body>
+
 </html>

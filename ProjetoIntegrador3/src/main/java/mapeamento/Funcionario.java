@@ -42,9 +42,6 @@ public class Funcionario implements Serializable {
     @NotNull
     @Column(name = "FUNC_TELEFONE")
     private int funcTelefone;
-    @JoinColumn(name = "FUNC_CIDCOD", referencedColumnName = "CID_COD")
-    @ManyToOne(optional = false)
-    private Cidade funcCidcod;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "atendxfuncid")
     private List<Atendimentoxfuncionario> atendimentoxfuncionarioList;
 
@@ -94,14 +91,6 @@ public class Funcionario implements Serializable {
         this.funcTelefone = funcTelefone;
     }
 
-    public Cidade getFuncCidcod() {
-        return funcCidcod;
-    }
-
-    public void setFuncCidcod(Cidade funcCidcod) {
-        this.funcCidcod = funcCidcod;
-    }
-
     public List<Atendimentoxfuncionario> getAtendimentoxfuncionarioList() {
         return atendimentoxfuncionarioList;
     }
@@ -134,5 +123,5 @@ public class Funcionario implements Serializable {
     public String toString() {
         return "mapeamento.Funcionario[ funcId=" + funcId + " ]";
     }
-    
+
 }

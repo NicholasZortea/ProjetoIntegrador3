@@ -1,7 +1,6 @@
 mapeamento\Funcionario.class
 mapeamento\Peca.class
 menu\bean\CarroService.class
-mapeamento\Cidade.class
 mapeamento\Atendimento.class
 menu\bean\Dao.class
 mapeamento\Modelo.class
@@ -10,5 +9,7 @@ mapeamento\Atendimentoxpeca.class
 mapeamento\Marca.class
 mapeamento\Atendimentoxfuncionario.class
 beans\CarroBean.class
+beans\ClienteBean.class
 mapeamento\Cliente.class
+menu\bean\ClienteService.class
 mapeamento\Carro.class
