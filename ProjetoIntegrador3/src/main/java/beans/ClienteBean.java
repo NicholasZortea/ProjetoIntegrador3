@@ -22,7 +22,7 @@ public class ClienteBean implements Serializable {
     private String nome;
     private String email;
     private String cpf;
-    private int telefone;
+    private Integer telefone;
 
     @PostConstruct
     public void init() {
@@ -33,11 +33,11 @@ public class ClienteBean implements Serializable {
         Cliente cliente = new Cliente();
 
         if (email != null && !email.isEmpty()) {
-            cliente.setCliEmail(email);
+            cliente.setCliEmail(this.email);
         }
-        cliente.setCliCpf(cpf);
-        cliente.setCliNome(nome);
-        cliente.setCliTelefone(telefone);
+        cliente.setCliCpf(this.cpf);
+        cliente.setCliNome(this.nome);
+        cliente.setCliTelefone(this.telefone);
 
         clienteService.salvar(cliente);
     }
@@ -66,11 +66,11 @@ public class ClienteBean implements Serializable {
         this.cpf = cpf;
     }
 
-    public int getTelefone() {
+    public Integer getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(Integer telefone) {
         this.telefone = telefone;
     }
 
