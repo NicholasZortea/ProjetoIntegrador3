@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -33,8 +35,8 @@ public class Carro implements Serializable {
     @NotNull
     @Column(name = "CAR_ANOFABRIC")
     private int carAnofabric;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "atendCarplaca")
-    private List<Atendimento> atendimentoList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "agendaCarplaca")
+    private List<Agenda> agendaList;
     @JoinColumn(name = "CAR_CLIID", referencedColumnName = "CLI_ID")
     @ManyToOne(optional = false)
     private Cliente carCliid;
@@ -70,12 +72,12 @@ public class Carro implements Serializable {
         this.carAnofabric = carAnofabric;
     }
 
-    public List<Atendimento> getAtendimentoList() {
-        return atendimentoList;
+    public List<Agenda> getAgendaList() {
+        return agendaList;
     }
 
-    public void setAtendimentoList(List<Atendimento> atendimentoList) {
-        this.atendimentoList = atendimentoList;
+    public void setAgendaList(List<Agenda> agendaList) {
+        this.agendaList = agendaList;
     }
 
     public Cliente getCarCliid() {
@@ -118,5 +120,5 @@ public class Carro implements Serializable {
     public String toString() {
         return "mapeamento.Carro[ carPlaca=" + carPlaca + " ]";
     }
-    
+
 }

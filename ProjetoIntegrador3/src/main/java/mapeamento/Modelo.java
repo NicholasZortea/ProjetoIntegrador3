@@ -107,5 +107,5 @@ public class Modelo implements Serializable {
     public String toString() {
         return "mapeamento.Modelo[ modCod=" + modCod + " ]";
     }
-    
+
 }

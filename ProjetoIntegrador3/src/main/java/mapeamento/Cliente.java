@@ -42,10 +42,12 @@ public class Cliente implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "CLI_TELEFONE")
-    private int cliTelefone;
-    @Size(max = 100)
+    private long cliTelefone;
+    @Size(max = 50)
     @Column(name = "CLI_EMAIL")
     private String cliEmail;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "agendaCliid")
+    private List<Agenda> agendaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "carCliid")
     private List<Carro> carroList;
 
@@ -56,7 +58,7 @@ public class Cliente implements Serializable {
         this.cliId = cliId;
     }
 
-    public Cliente(Integer cliId, String cliNome, String cliCpf, int cliTelefone) {
+    public Cliente(Integer cliId, String cliNome, String cliCpf, long cliTelefone) {
         this.cliId = cliId;
         this.cliNome = cliNome;
         this.cliCpf = cliCpf;
@@ -87,11 +89,11 @@ public class Cliente implements Serializable {
         this.cliCpf = cliCpf;
     }
 
-    public int getCliTelefone() {
+    public long getCliTelefone() {
         return cliTelefone;
     }
 
-    public void setCliTelefone(int cliTelefone) {
+    public void setCliTelefone(long cliTelefone) {
         this.cliTelefone = cliTelefone;
     }
 
@@ -101,6 +103,14 @@ public class Cliente implements Serializable {
 
     public void setCliEmail(String cliEmail) {
         this.cliEmail = cliEmail;
+    }
+
+    public List<Agenda> getAgendaList() {
+        return agendaList;
+    }
+
+    public void setAgendaList(List<Agenda> agendaList) {
+        this.agendaList = agendaList;
     }
 
     public List<Carro> getCarroList() {

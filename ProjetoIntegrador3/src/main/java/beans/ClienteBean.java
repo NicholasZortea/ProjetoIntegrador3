@@ -22,7 +22,7 @@ public class ClienteBean implements Serializable {
     private String nome;
     private String email;
     private String cpf;
-    private Integer telefone;
+    private long telefone;
 
     @PostConstruct
     public void init() {
@@ -66,11 +66,11 @@ public class ClienteBean implements Serializable {
         this.cpf = cpf;
     }
 
-    public Integer getTelefone() {
+    public long getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(Integer telefone) {
+    public void setTelefone(long telefone) {
         this.telefone = telefone;
     }
 
