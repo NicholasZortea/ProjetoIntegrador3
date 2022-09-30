@@ -9,18 +9,15 @@
     <h:body>
         <h:outputText value=" Cadastro Carro"/>
         <h:form id="form1">
-            <p:panel id="cadastroCliente" header="Informações">
+            <p:panel id="cadastroCarro" header="Informações">
                 <p:panelGrid columns="2" layout="grid">
                     <p:panelGrid columns="1" layout="grid">
-                        <p:outputLabel value="Cliente Nome"/>
-                        <p:inputText id="nome" value="#{clienteBean.nome}"/>
-                        <p:outputLabel value="CPF"/>
-                        <p:inputText id="cpf" value="#{clienteBean.cpf}" maxlength="14"/>
-                        <p:outputLabel value="Telefone"/>
-                        <p:inputText id="telefone" value="#{clienteBean.telefone}" maxlength="11" />
-                        <p:outputLabel value="E-mail"/>
-                        <p:inputText id="email" value="#{clienteBean.email}"/>
-                        <p:commandButton value="Icon Right" icon="pi pi-check" iconPos="right" actionListener="#{clienteBean.salvar()}" process="@this" ajax="false" />
+                        <p:outputLabel value="Placa do Carro"/>
+                        <p:inputText id="placa" value="#{carroBean.placa}"/>
+                        <p:outputLabel value="Ano de fabricação"/>
+                        <p:inputText id="anoFabric" value="#{carroBean.anoFabric}"/>
+                       
+                        <p:commandButton value="Icon Right" icon="pi pi-check" iconPos="right" actionListener="#{carroBean.salvar()}" process="@this" ajax="false" />
                     </p:panelGrid>
                 </p:panelGrid>
 
