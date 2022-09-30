@@ -1,10 +1,13 @@
 D:\GithubProjects\ProjetoIntegrador3\ProjetoIntegrador3\src\main\java\mapeamento\Marca.java
-D:\GithubProjects\ProjetoIntegrador3\ProjetoIntegrador3\src\main\java\menu\bean\Dao.java
 D:\GithubProjects\ProjetoIntegrador3\ProjetoIntegrador3\src\main\java\mapeamento\Modelo.java
-D:\GithubProjects\ProjetoIntegrador3\ProjetoIntegrador3\src\main\java\menu\bean\CarroService.java
-D:\GithubProjects\ProjetoIntegrador3\ProjetoIntegrador3\src\main\java\mapeamento\Carro.java
+D:\GithubProjects\ProjetoIntegrador3\ProjetoIntegrador3\src\main\java\service\Dao.java
+D:\GithubProjects\ProjetoIntegrador3\ProjetoIntegrador3\src\main\java\service\CarroService.java
 D:\GithubProjects\ProjetoIntegrador3\ProjetoIntegrador3\src\main\java\beans\ClienteBean.java
 D:\GithubProjects\ProjetoIntegrador3\ProjetoIntegrador3\src\main\java\mapeamento\Agenda.java
 D:\GithubProjects\ProjetoIntegrador3\ProjetoIntegrador3\src\main\java\mapeamento\Cliente.java
 D:\GithubProjects\ProjetoIntegrador3\ProjetoIntegrador3\src\main\java\beans\CarroBean.java
-D:\GithubProjects\ProjetoIntegrador3\ProjetoIntegrador3\src\main\java\menu\bean\ClienteService.java
+D:\GithubProjects\ProjetoIntegrador3\ProjetoIntegrador3\src\main\java\service\ModeloService.java
+D:\GithubProjects\ProjetoIntegrador3\ProjetoIntegrador3\src\main\java\mapeamento\Carro.java
+D:\GithubProjects\ProjetoIntegrador3\ProjetoIntegrador3\src\main\java\service\MarcaService.java
+D:\GithubProjects\ProjetoIntegrador3\ProjetoIntegrador3\src\main\java\service\ClienteService.java
+D:\GithubProjects\ProjetoIntegrador3\ProjetoIntegrador3\src\main\java\Utils.java

@@ -6,7 +6,13 @@ import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import mapeamento.Carro;
-import menu.bean.CarroService;
+import mapeamento.Cliente;
+import mapeamento.Marca;
+import mapeamento.Modelo;
+import service.CarroService;
+import service.ClienteService;
+import service.MarcaService;
+import service.ModeloService;
 
 /**
  *
@@ -18,6 +24,12 @@ public class CarroBean implements Serializable {
 
     @EJB
     private CarroService carroService;
+    @EJB
+    private ModeloService modeloService;
+    @EJB
+    private MarcaService marcaService;
+    @EJB
+    private ClienteService clienteService;
 
     private String placa;
     private int anoFabric;
@@ -26,12 +38,17 @@ public class CarroBean implements Serializable {
     private void init() {
         Carro carro = new Carro();
     }
-    
+
     public void salvar() {
         Carro carro = new Carro();
+        Cliente cliente = clienteService.busca(Cliente.class, 2);
+        Modelo modelo = modeloService.busca(Modelo.class, 1);
+        Marca marca = marcaService.busca(Marca.class, 1);
 
         carro.setCarPlaca(this.placa);
         carro.setCarAnofabric(this.anoFabric);
+        carro.setCarCliid(cliente);
+        carro.setCarModcod(modelo);
 
         carroService.salvar(carro);
     }
@@ -51,7 +68,5 @@ public class CarroBean implements Serializable {
     public void setAnoFabric(int anoFabric) {
         this.anoFabric = anoFabric;
     }
-    
-    
 
 }

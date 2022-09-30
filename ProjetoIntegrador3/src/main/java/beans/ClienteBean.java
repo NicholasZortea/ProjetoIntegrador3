@@ -6,7 +6,7 @@ import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import mapeamento.Cliente;
-import menu.bean.ClienteService;
+import service.ClienteService;
 
 /**
  *
