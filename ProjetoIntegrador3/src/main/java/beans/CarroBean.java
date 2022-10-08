@@ -40,8 +40,6 @@ public class CarroBean implements Serializable {
 
     @PostConstruct
     private void init() {
-        buscarMarcas();
-        buscarModelos();
 
     }
 

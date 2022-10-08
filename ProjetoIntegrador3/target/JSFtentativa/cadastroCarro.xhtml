@@ -18,29 +18,17 @@
                         <p:outputLabel value="Ano de fabricação"/>
                         <p:inputText id="anoFabric" value="#{carroBean.anoFabric}" maxlength="4"/>
 
-                        <p:outputLabel value="Marca *"/>
-                        <p:selectOneMenu id="marca" value="#{carroBean.modelo}"
+                        <p:outputLabel value="Marca"/>
+                        <p:selectOneMenu id="marca" value="#{carroBean.marca}"
                                          filter="true" filterMatchMode="contains">
 
                             <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true"/>
                             <f:selectItems value="#{carroBean.buscarMarcas()}" var="marca"
                                            itemLabel="#{marca.marcMarca}"
                                            itemValue="#{marca}"  />
-                            <p:ajax update="@this" process="@this" />
                         </p:selectOneMenu>
 
-                        <p:outputLabel value="Modelo"  />
-                        <p:selectOneMenu id="modelo" value="#{carroBean.marca}"
-                                         required="true" filter="true" filterMatchMode="contains">
-                            <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true" />
-
-                            <f:selectItems value="#{carroBean.buscarModelos()}" var="modelo"
-                                           itemLabel="#{modelo.modModelo}"
-                                           itemValue="#{modelo}"  />
-                            <p:ajax update="@this" process="@this" />
-                        </p:selectOneMenu>
-
-                        <p:commandButton value="Gravar" icon="pi pi-save" iconPos="right" actionListener="#{carroBean.salvar()}" process="@this" ajax="false" />
+                        <p:commandButton value="Gravar" icon="pi pi-save" iconPos="right" actionListener="#{carroBean.salvar()}" ajax="false" />
                     </p:panelGrid>
                 </p:panelGrid>
 
