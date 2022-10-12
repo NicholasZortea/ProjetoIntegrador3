@@ -83,6 +83,10 @@ public class Modelo implements Serializable {
         this.carroList = carroList;
     }
 
+    public String itemLabel() {
+        return this.modCod + "-" + this.modModelo;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

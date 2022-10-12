@@ -50,6 +50,7 @@ public class CarroBean implements Serializable {
         carro.setCarAnofabric(this.anoFabric);
         carro.setCarCliid(cliente);
         carro.setCarModcod(this.modelo);
+        carro.getCarModcod().setModMarccod(this.marca);
 
         carroService.salvar(carro);
     }

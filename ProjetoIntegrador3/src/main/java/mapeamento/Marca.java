@@ -70,6 +70,10 @@ public class Marca implements Serializable {
         this.modeloList = modeloList;
     }
 
+    public String itemLabel() {
+        return this.marcCod + "-" + this.marcMarca;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
