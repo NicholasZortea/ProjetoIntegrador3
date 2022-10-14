@@ -43,6 +43,8 @@ public class CarroBean implements Serializable {
 
     @PostConstruct
     private void init() {
+        buscarMarcas();
+        buscarModelos();
 
     }
 
@@ -74,7 +76,6 @@ public class CarroBean implements Serializable {
         carro.setCarAnofabric(this.anoFabric);
         carro.setCarCliid(this.cliente);
         carro.setCarModcod(this.modelo);
-        carro.getCarModcod().setModMarccod(this.marca);
 
         carroService.salvar(carro);
     }

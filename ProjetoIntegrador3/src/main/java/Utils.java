@@ -1,5 +1,3 @@
-package Utilitarios;
-
 
 import java.io.Serializable;
 import javax.faces.context.ExternalContext;

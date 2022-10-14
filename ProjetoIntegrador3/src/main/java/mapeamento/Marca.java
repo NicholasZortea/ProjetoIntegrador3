@@ -6,8 +6,11 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -20,10 +23,12 @@ import javax.validation.constraints.Size;
 @Table(name = "MARCA")
 public class Marca implements Serializable {
 
+   
     private static final long serialVersionUID = 1L;
     @Id
-    @Basic(optional = false)
-    @NotNull
+    //@Basic(optional = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MARCA_SEQ")
+    @SequenceGenerator(name = "CMARCA_SEQ", sequenceName = "MARCA_SEQ", allocationSize = 1)
     @Column(name = "MARC_COD")
     private Integer marcCod;
     @Basic(optional = false)
@@ -68,10 +73,6 @@ public class Marca implements Serializable {
 
     public void setModeloList(List<Modelo> modeloList) {
         this.modeloList = modeloList;
-    }
-
-    public String itemLabel() {
-        return this.marcCod + "-" + this.marcMarca;
     }
 
     @Override
