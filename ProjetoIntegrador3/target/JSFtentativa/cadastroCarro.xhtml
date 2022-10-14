@@ -19,8 +19,8 @@
                         <p:inputText id="anoFabric" value="#{carroBean.anoFabric}" maxlength="4"/>
 
                         <p:outputLabel value="Marca *"/>
-                        <p:selectOneMenu id="marca" value="#{carroBean.modelo}"
-                                         filter="true" filterMatchMode="contains">
+                        <p:selectOneMenu id="marca" value="#{carroBean.marca}"
+                                      required="true" filter="true" filterMatchMode="contains">
 
                             <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true"/>
                             <f:selectItems value="#{carroBean.buscarMarcas()}" var="marca"
@@ -30,7 +30,7 @@
                         </p:selectOneMenu>
 
                         <p:outputLabel value="Modelo"  />
-                        <p:selectOneMenu id="modelo" value="#{carroBean.marca}"
+                        <p:selectOneMenu id="modelo" value="#{carroBean.modelo}"
                                          required="true" filter="true" filterMatchMode="contains">
                             <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true" />
 

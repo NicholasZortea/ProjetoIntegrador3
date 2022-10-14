@@ -26,10 +26,12 @@ public class Carro implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 7)
     @Column(name = "CAR_PLACA")
     private String carPlaca;
+    @Basic(optional = false)
     @NotNull
     @Column(name = "CAR_ANOFABRIC")
     private int carAnofabric;

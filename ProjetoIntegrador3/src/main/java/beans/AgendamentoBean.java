@@ -48,7 +48,7 @@ public class AgendamentoBean implements Serializable {
         
         
         
-        agenda.setAgendaCarplaca(carro);
+        //agenda.setAgendaCarplaca(carro);
         agenda.setAgendaData(this.agendaData);
         agenda.setAgendaDesc(this.agendaDesc);
         
