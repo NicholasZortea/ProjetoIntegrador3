@@ -23,7 +23,6 @@ import javax.validation.constraints.Size;
 @Table(name = "MARCA")
 public class Marca implements Serializable {
 
-   
     private static final long serialVersionUID = 1L;
     @Id
     //@Basic(optional = false)
@@ -73,6 +72,10 @@ public class Marca implements Serializable {
 
     public void setModeloList(List<Modelo> modeloList) {
         this.modeloList = modeloList;
+    }
+
+    public String itemLabel() {
+        return this.marcCod + " " + this.marcMarca;
     }
 
     @Override
