@@ -78,7 +78,7 @@ public class CarroBean implements Serializable {
         carro.setCarModcod(this.modelo);
 
         carroService.salvar(carro);
-    }
+    }  
 
     public List<Marca> buscarMarcas() {
         String sqlQuery = "SELECT * FROM MARCA m ";

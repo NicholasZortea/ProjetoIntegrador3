@@ -24,7 +24,7 @@
 
                             <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true" />
                             <f:selectItems value="#{carroBean.buscarClientes()}" var="cliente"
-                                           itemLabel="#{cliente.cliNome}"
+                                           itemLabel="#{cliente.itemLabel}"
                                            itemValue="#{cliente}" />
                             <p:ajax update="modelo" />
                         </p:selectOneMenu>
