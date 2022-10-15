@@ -9,6 +9,6 @@ import mapeamento.Agenda;
  */
 @Stateless
 @LocalBean
-public class AgendamentoService extends Dao<Agenda> {
+public class AgendaService extends Dao<Agenda> {
 
 }
