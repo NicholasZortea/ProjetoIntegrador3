@@ -12,7 +12,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.inject.Named;
 import mapeamento.Cliente;
-import mapeamento.Marca;
 import service.ClienteService;
 
 /**
