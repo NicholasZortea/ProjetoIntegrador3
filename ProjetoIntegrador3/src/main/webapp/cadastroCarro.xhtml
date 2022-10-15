@@ -5,13 +5,45 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
+    <style>       
+        
+        #form1{
+            width: 400px;
+            margin: 0 auto;
+            border-radius: 100px !important;            
+        }
+        .ui-panel-titlebar{
+            text-align: center;
+        }
+        .ui-selectonemenu-label{
+            width: 200px;
+        } 
+        .ui-inputfield{
+            width: 200px !important;
+        } 
+
+        .divizada{
+            margin: 0 auto;
+            width: max-content;
+        }
+        
+        .botaoVoltar{
+            background-color: red !important;
+        }
+        
+        .ui-panelgrid-cell .ui-g-12 .ui-md-12{
+            padding: 0 0 !important;
+        }
+    </style>
+    
     <h:head>
+        <title>Cadastro de Carros</title>
     </h:head>
     <h:body>
         <h:outputText value=" Cadastro Carro"/>
         <h:form id="form1">
             <p:panel id="cadastroCarro" header="Informações">
-                <p:panelGrid columns="2" layout="grid">
+                <div class="divizada">
                     <p:panelGrid columns="1" layout="grid">
                         <p:outputLabel value="Placa do Carro"/>
                         <p:inputText id="placa" value="#{carroBean.placa}" maxlength="7"/>
@@ -39,10 +71,17 @@
                                            itemValue="#{modelo}"  />
                             <p:ajax update="@this" process="@this" />
                         </p:selectOneMenu>
-
-                        <p:commandButton value="Gravar" icon="pi pi-save" iconPos="right" actionListener="#{carroBean.salvar()}" process="@this" ajax="false" />
+                        
+                        <!--<div class="envolveBotao">-->
+                            <p:commandButton value="Gravar" icon="pi pi-save" iconPos="right" actionListener="#{carroBean.salvar()}" process="@this" ajax="false" />    
+                        <!--</div>-->
+                        
+                        <!--<div class="envolveBotao">-->
+                            <p:commandButton value="Voltar" icon="pi pi-times" iconPos="right" type="button" styleClass="botaoVoltar"/>
+                        <!--</div>-->
+                        
                     </p:panelGrid>
-                </p:panelGrid>
+                </div>
 
             </p:panel>
         </h:form>
