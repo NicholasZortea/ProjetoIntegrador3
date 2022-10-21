@@ -147,7 +147,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return this.cliId;
+        return this.cliId.toString();
     }
 
 }
