@@ -12,7 +12,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.inject.Named;
 import mapeamento.Cliente;
-import mapeamento.Marca;
 import service.ClienteService;
 
 /**
@@ -30,7 +29,10 @@ public class ClienteConverter implements Converter, Serializable {
     public Object getAsObject(FacesContext fc, UIComponent uic, String codigo) {
 
         if (codigo != null || !codigo.isEmpty()) {
-            return clienteService.busca(Cliente.class, Integer.valueOf(codigo));
+            String sqlQuery = "SELECT * FROM  CLIENTE c "
+                    + " WHERE  c.CLI_NOME = '" + codigo + "' ";
+
+            return clienteService.executeNativeQuery(sqlQuery, Cliente.class).get(0);
         }
 
         return null;

@@ -25,7 +25,6 @@ public class Marca implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    //@Basic(optional = false)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "MARCA_SEQ")
     @SequenceGenerator(name = "CMARCA_SEQ", sequenceName = "MARCA_SEQ", allocationSize = 1)
     @Column(name = "MARC_COD")

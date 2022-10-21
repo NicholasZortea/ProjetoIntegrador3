@@ -122,7 +122,7 @@ public class Cliente implements Serializable {
     }
 
     public String getItemLabel() {
-        return this.cliNome;
+        return this.cliId + " " + this.cliNome;
     }
 
     @Override
@@ -147,7 +147,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "mapeamento.Cliente[ cliId=" + cliId + " ]";
+        return this.cliId;
     }
 
 }
