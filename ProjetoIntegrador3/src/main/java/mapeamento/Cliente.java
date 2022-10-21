@@ -147,11 +147,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-<<<<<<< Updated upstream
-        return this.cliId.toString();
-=======
         return String.valueOf(this.cliId);
->>>>>>> Stashed changes
     }
 
 }
