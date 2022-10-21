@@ -12,7 +12,10 @@ beans\CarroBean.class
 beans\ClienteBean.class
 mapeamento\Cliente.class
 service\AgendaService.class
+<<<<<<< Updated upstream
 Converters\CarroConverter.class
+=======
+>>>>>>> Stashed changes
 Converters\ModeloConverter.class
 beans\AgendaBean.class
 mapeamento\Carro.class

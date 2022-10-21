@@ -31,7 +31,6 @@ public class ClienteConverter implements Converter, Serializable {
         if (codigo != null || !codigo.isEmpty()) {
             String sqlQuery = "SELECT * FROM  CLIENTE c "
                     + " WHERE  c.CLI_NOME = '" + codigo + "' ";
-
             return clienteService.executeNativeQuery(sqlQuery, Cliente.class).get(0);
         }
 
