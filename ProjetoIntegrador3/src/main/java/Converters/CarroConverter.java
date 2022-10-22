@@ -29,7 +29,7 @@ public class CarroConverter implements Converter, Serializable {
     public Object getAsObject(FacesContext fc, UIComponent uic, String codigo) {
 
         if (codigo != null || !codigo.isEmpty()) {
-            return carroService.busca(Carro.class, Integer.valueOf(codigo));
+            return carroService.busca(Carro.class, codigo);
         }
 
         return null;

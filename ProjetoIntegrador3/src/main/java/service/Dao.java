@@ -1,4 +1,3 @@
-
 package service;
 
 import java.lang.reflect.ParameterizedType;
@@ -7,9 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 public abstract class Dao<T> {
-    
-    //DATA ACESS OBJECT
 
+    //DATA ACESS OBJECT
     @PersistenceContext(name = "sysdb")
     private EntityManager em;
 
@@ -33,9 +31,13 @@ public abstract class Dao<T> {
     public T busca(Class cl, Integer id) {
         return em.find((Class<T>) cl, id);
     }
-    
+
+    public T busca(Class cl, String id) {
+        return em.find((Class<T>) cl, id);
+    }
+
     public <T> List<T> executeNativeQuery(String sqlQuery, Class classe) {
-        
+
         List<T> list = (List<T>) em.createNativeQuery(sqlQuery, classe).getResultList();
         return list;
     }
