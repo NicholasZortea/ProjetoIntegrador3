@@ -122,7 +122,7 @@ public class Cliente implements Serializable {
     }
 
     public String getItemLabel() {
-        return this.cliId + " " + this.cliNome;
+        return this.cliNome;
     }
 
     @Override

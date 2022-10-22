@@ -2,6 +2,7 @@ package beans;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -10,8 +11,8 @@ import javax.inject.Named;
 import mapeamento.Agenda;
 import mapeamento.Carro;
 import mapeamento.Cliente;
-import mapeamento.Marca;
-import mapeamento.Modelo;
+import org.primefaces.model.datepicker.DateMetadataModel;
+import org.primefaces.model.datepicker.DefaultDateMetadataModel;
 import service.CarroService;
 import service.ClienteService;
 import service.MarcaService;
@@ -45,11 +46,15 @@ public class AgendaBean implements Serializable {
     private String agendaCarplaca;
     private Cliente cliente;
     private Carro carro;
+    private DateMetadataModel model;
    
     
     @PostConstruct
-    private void init() {
+    private void init() {   
         Agenda agenda = new Agenda();
+        
+        LocalDate agendaData = LocalDate.now().withDayOfMonth(1);       
+        model = new DefaultDateMetadataModel();
     }
 
     public void salvar() {  
@@ -65,15 +70,19 @@ public class AgendaBean implements Serializable {
         agendaService.salvar(agenda);
     }
 
-    public List<Modelo> buscarCliente() {
+    public List<Cliente> buscarCliente() {
         String sqlQuery = "SELECT * FROM CLIENTE cli";
         return clienteService.executeNativeQuery(sqlQuery, Cliente.class);
     }
     
-    public List<Marca> buscarCarro() {
-        String sqlQuery = "SELECT * FROM CARRO c ";
+    public List<Carro> buscarCarro() {
+        if(this.cliente!=null){
+        String sqlQuery = "SELECT * FROM CARRO c WHERE c.CAR_CLIID = ".concat(String.valueOf(this.cliente.getCliId().toString()));
         return carroService.executeNativeQuery(sqlQuery, Carro.class);
+        }       
+        return null;
     }
+    
 
     public int getAgendaCod() {
         return agendaCod;

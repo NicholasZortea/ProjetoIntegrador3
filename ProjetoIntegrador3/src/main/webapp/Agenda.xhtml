@@ -13,11 +13,27 @@
                         width: 300px; font-size:small; padding-left: auto;" closable="true" >
                 <p:autoUpdate/>
             </p:messages>
+                    
             <p:panel id="cadastroCarro" header="Agendamento">
                 <p:panelGrid columns="2" layout="grid">
                     <p:panelGrid columns="1" layout="grid">
-                        <p:outputLabel value="Carro"/>
-                        <p:selectOneMenu id="carro" value="#{carroBean.carro}"                                         
+                                          
+                        <p:outputLabel value="Cliente"/>
+                        <p:selectOneMenu id="cliente" value="#{agendaBean.cliente}"
+                                         filter="true" filterMatchMode="contains"
+                                         converter="#{clienteConverter}">
+
+                            <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true" />
+                            <f:selectItems value="#{agendaBean.buscarCliente()}" var="cliente"
+                                           itemLabel="#{cliente.itemLabel}"
+                                           itemValue="#{cliente}" />
+                            <p:ajax update = "carro" />
+                        </p:selectOneMenu>
+                                   
+                        
+                        <p:outputLabel value="Carro"/>                                                                                      
+                                               
+                        <p:selectOneMenu id="carro" value="#{agendaBean.carro}" disabled ="#{agendaBean.buscarCarro() eq null}"                                        
                                         filter="true" filterMatchMode="contains"
                                         converter="#{carroConverter}">
 
@@ -27,10 +43,32 @@
                                            itemValue="#{carro}" />
                             <p:ajax />
                         </p:selectOneMenu>
-
                         
-                        <p:outputLabel value="Data"/>
-                        <p:inputText id="data" value="#{agendaBean.agendaData}"/>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <p:outputLabel value="Data"/>                       
+            <p:outputLabel for="basic" value="Basic"/>
+            <p:datePicker id="basic" value="#{agendaBean.agendaData}"
+                          model="#{datePickerMetadataView.model}"/>
 
                         <p:outputLabel value="Descrição"/>
                         <p:inputText id="descricao" value="#{agendaBean.agendaDesc}"/>
