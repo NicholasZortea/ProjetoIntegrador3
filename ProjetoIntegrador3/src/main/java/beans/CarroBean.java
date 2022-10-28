@@ -47,12 +47,12 @@ public class CarroBean implements Serializable {
         buscarModelos();
 
     }
-    
-    public String doVoltar() {                  
+
+    public String doVoltar() {
         return "Index.xhtml";
     }
-    
-    public String doIr() {                  
+
+    public String doIr() {
         return "cadastroCarro.xhtml";
     }
 
@@ -86,7 +86,7 @@ public class CarroBean implements Serializable {
         carro.setCarModcod(this.modelo);
 
         carroService.salvar(carro);
-    }  
+    }
 
     public List<Marca> buscarMarcas() {
         String sqlQuery = "SELECT * FROM MARCA m ";
