@@ -56,6 +56,14 @@ public class AgendaBean implements Serializable {
         LocalDateTimeType agendaData = new LocalDateTimeType();
         model = new DefaultDateMetadataModel();
     }
+    
+    public String doVoltar() {                  
+        return "Index.xhtml";
+    }
+    
+    public String doIr() {                  
+        return "Agenda.xhtml";
+    }
 
     public void salvar() {
         Agenda agenda = new Agenda();

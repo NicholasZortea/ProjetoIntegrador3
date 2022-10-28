@@ -28,6 +28,14 @@ public class ClienteBean implements Serializable {
     public void init() {
         Cliente cliente = new Cliente();
     }
+    
+    public String doVoltar() {                  
+        return "Index.xhtml";
+    }
+    
+    public String doIr() {                  
+        return "cadastroCliente.xhtml";
+    }
 
     public void salvar() {
         Cliente cliente = new Cliente();

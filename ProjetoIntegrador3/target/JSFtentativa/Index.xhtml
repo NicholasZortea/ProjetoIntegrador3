@@ -40,7 +40,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
             </p:messages>
             <h:form id="form1">
                 <center>
-                    <p:commandButton value="Adicionar" id="botao"  process="@this"  ajax="false"></p:commandButton>
+                    <p:commandButton style="margin-right: 30px;" id="cadastroCliente" value="CADASTRAR CLIENTE" process="@this" action="#{clienteBean.doIr}" ajax="false"></p:commandButton>
+                    <p:commandButton style="margin-right: 30px;" id="cadastroCarro" value="CADASTRAR CARRO"  process="@this" action="#{carroBean.doIr}" ajax="false"></p:commandButton>
+                    <p:commandButton style="margin-right: 30px;" id="cadastroAgenda" value="AGENDAMENTO" process="@this" action="#{agendaBean.doIr}" ajax="false"></p:commandButton>
                 </center>
             </h:form>
         </div>
