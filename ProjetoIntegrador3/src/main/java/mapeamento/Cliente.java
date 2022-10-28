@@ -121,6 +121,10 @@ public class Cliente implements Serializable {
         this.carroList = carroList;
     }
 
+    public String getItemLabel() {
+        return this.cliNome;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -143,7 +147,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "mapeamento.Cliente[ cliId=" + cliId + " ]";
+        return String.valueOf(this.cliId);
     }
 
 }

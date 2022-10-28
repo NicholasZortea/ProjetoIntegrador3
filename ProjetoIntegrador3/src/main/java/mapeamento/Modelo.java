@@ -25,8 +25,6 @@ import javax.validation.constraints.Size;
 @Table(name = "MODELO")
 public class Modelo implements Serializable {
 
-    
-    
     private static final long serialVersionUID = 1L;
     @Id
     //@Basic(optional = false)
@@ -87,6 +85,10 @@ public class Modelo implements Serializable {
 
     public void setCarroList(List<Carro> carroList) {
         this.carroList = carroList;
+    }
+
+    public String itemLabel() {
+        return this.modCod + " " + this.modModelo;
     }
 
     @Override

@@ -96,6 +96,10 @@ public class Carro implements Serializable {
         this.carModcod = carModcod;
     }
 
+    public String getItemLabel(){
+    return this.carModcod.getModModelo();
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

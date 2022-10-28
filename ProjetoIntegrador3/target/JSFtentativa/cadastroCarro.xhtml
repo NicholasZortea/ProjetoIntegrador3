@@ -42,9 +42,25 @@
     <h:body>
         <h:outputText value=" Cadastro Carro"/>
         <h:form id="form1">
+            <p:messages id="messages" showDetail="true" style="right: 90px;top: 20px; position:absolute;height: 60px;
+                        width: 300px; font-size:small; padding-left: auto;" closable="true" >
+                <p:autoUpdate/>
+            </p:messages>
             <p:panel id="cadastroCarro" header="Informações">
                 <div class="divizada">
                     <p:panelGrid columns="1" layout="grid">
+                        <p:outputLabel value="Cliente *"/>
+                        <p:selectOneMenu id="cliente" value="#{carroBean.cliente}"
+                                         filter="true" filterMatchMode="contains"
+                                         converter="#{clienteConverter}">
+
+                            <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true" />
+                            <f:selectItems value="#{carroBean.buscarClientes()}" var="cliente"
+                                           itemLabel="#{cliente.itemLabel}"
+                                           itemValue="#{cliente}" />
+                            <p:ajax update="modelo" />
+                        </p:selectOneMenu>
+
                         <p:outputLabel value="Placa do Carro"/>
                         <p:inputText id="placa" value="#{carroBean.placa}" maxlength="7"/>
                         <p:outputLabel value="Ano de fabricação"/>
@@ -52,34 +68,29 @@
 
                         <p:outputLabel value="Marca *"/>
                         <p:selectOneMenu id="marca" value="#{carroBean.marca}"
-                                      required="true" filter="true" filterMatchMode="contains">
+                                         filter="true" filterMatchMode="contains"
+                                         converter="#{marcaConverter}">
+
+                            <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true" />
+                            <f:selectItems value="#{carroBean.buscarMarcas()}" var="marca"
+                                           itemLabel="#{marca.itemLabel()}"
+                                           itemValue="#{marca}" />
+                            <p:ajax update="modelo" />
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="Modelo *"/>
+                        <p:selectOneMenu id="modelo" value="#{carroBean.modelo}"
+                                         filter="true" filterMatchMode="contains"
+                                         converter="#{modeloConverter}" disabled="#{carroBean.buscarModelos() eq null }">
 
                             <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true"/>
-                            <f:selectItems value="#{carroBean.buscarMarcas()}" var="marca"
-                                           itemLabel="#{marca.marcMarca}"
-                                           itemValue="#{marca}"  />
-                            <p:ajax update="@this" process="@this" />
-                        </p:selectOneMenu>
-
-                        <p:outputLabel value="Modelo"  />
-                        <p:selectOneMenu id="modelo" value="#{carroBean.modelo}"
-                                         required="true" filter="true" filterMatchMode="contains">
-                            <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true" />
-
                             <f:selectItems value="#{carroBean.buscarModelos()}" var="modelo"
-                                           itemLabel="#{modelo.modModelo}"
-                                           itemValue="#{modelo}"  />
-                            <p:ajax update="@this" process="@this" />
+                                           itemLabel="#{modelo.itemLabel()}"
+                                           itemValue="#{modelo}"/>
                         </p:selectOneMenu>
-                        
-                        <!--<div class="envolveBotao">-->
-                            <p:commandButton value="Gravar" icon="pi pi-save" iconPos="right" actionListener="#{carroBean.salvar()}" process="@this" ajax="false" />    
-                        <!--</div>-->
-                        
-                        <!--<div class="envolveBotao">-->
-                            <p:commandButton value="Voltar" icon="pi pi-times" iconPos="right" type="button" styleClass="botaoVoltar"/>
-                        <!--</div>-->
-                        
+
+                        <p:commandButton value="Gravar" icon="pi pi-save" iconPos="right" actionListener="#{carroBean.salvar()}" ajax="false" />
+                        <p:commandButton id="voltar" value="Voltar" action="#{carroBean.doVoltar}" ajax="false" />
                     </p:panelGrid>
                 </div>
 

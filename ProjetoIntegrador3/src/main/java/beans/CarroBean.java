@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import mapeamento.Carro;
@@ -33,6 +35,7 @@ public class CarroBean implements Serializable {
     private ClienteService clienteService;
 
     private Carro carro = new Carro();
+    private Cliente cliente;
     private Marca marca;
     private Modelo modelo;
     private String placa;
@@ -45,12 +48,41 @@ public class CarroBean implements Serializable {
 
     }
 
+    public String doVoltar() {
+        return "Index.xhtml";
+    }
+
+    public String doIr() {
+        return "cadastroCarro.xhtml";
+    }
+
     public void salvar() {
-        Cliente cliente = clienteService.busca(Cliente.class, 2);
+        //Metodos de validação para salvar
+
+        if (this.placa.isEmpty() || this.placa.isBlank()) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+                    "Warning", "É necessario adicionar uma placa para registrar o carro."));
+            return;
+        }
+        if (this.anoFabric == 0) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+                    "Warning", "É necessario adicionar um ano de fabricação."));
+            return;
+        }
+        if (this.placa.isEmpty() || this.placa.isBlank()) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+                    "Warning", "É necessario adicionar uma placa para registrar o carro."));
+            return;
+        }
+        if (this.modelo == null || this.modelo.getModCod() == null) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+                    "Warning", "É necessario adicionar um modelo para registrar o carro."));
+            return;
+        }
 
         carro.setCarPlaca(this.placa);
         carro.setCarAnofabric(this.anoFabric);
-        carro.setCarCliid(cliente);
+        carro.setCarCliid(this.cliente);
         carro.setCarModcod(this.modelo);
 
         carroService.salvar(carro);
@@ -61,15 +93,18 @@ public class CarroBean implements Serializable {
         return marcaService.executeNativeQuery(sqlQuery, Marca.class);
     }
 
+    public List<Cliente> buscarClientes() {
+        String sqlQuery = "SELECT * FROM ClIENTE C ";
+        return clienteService.executeNativeQuery(sqlQuery, Cliente.class);
+    }
+
     public List<Modelo> buscarModelos() {
         String sqlQuery;
-
         if (this.marca != null) {
             sqlQuery = "SELECT * FROM MODELO mo WHERE MOD_MARCCOD = ".concat(String.valueOf(this.marca.getMarcCod().toString()));
-        } else {
-            sqlQuery = "SELECT * FROM MODELO mo";
+            return modeloService.executeNativeQuery(sqlQuery, Modelo.class);
         }
-        return modeloService.executeNativeQuery(sqlQuery, Modelo.class);
+        return null;
     }
 
     public String getPlaca() {
@@ -112,4 +147,11 @@ public class CarroBean implements Serializable {
         this.carro = carro;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }

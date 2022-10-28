@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+    </h:head>
+    <h:body>
+        <h:form id="form1">
+            <p:messages id="messages" showDetail="true" style="right: 90px;top: 20px; position:absolute;height: 60px;
+                        width: 300px; font-size:small; padding-left: auto;" closable="true" >
+                <p:autoUpdate/>
+            </p:messages>
+
+            <p:panel id="cadastroCarro" header="Agendamento">
+                <p:panelGrid columns="2" layout="grid">
+                    <p:panelGrid columns="1" layout="grid">
+
+                        <p:outputLabel value="Cliente"/>
+                        <p:selectOneMenu id="cliente" value="#{agendaBean.cliente}"
+                                         filter="true" filterMatchMode="contains"
+                                         converter="#{clienteConverter}">
+
+                            <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true" />
+                            <f:selectItems value="#{agendaBean.buscarCliente()}" var="cliente"
+                                           itemLabel="#{cliente.itemLabel}"
+                                           itemValue="#{cliente}" />
+                            <p:ajax update = "carro" />
+                        </p:selectOneMenu>
+
+
+                        <p:outputLabel value="Carro"/>
+
+                        <p:selectOneMenu id="carro" value="#{agendaBean.carro}" disabled ="#{agendaBean.buscarCarro() eq null}"
+                                         filter="true" filterMatchMode="contains"
+                                         converter="#{carroConverter}">
+
+                            <f:selectItem itemLabel="Selecione" itemValue="#{null}" itemDisabled="true" />
+                            <f:selectItems value="#{agendaBean.buscarCarro()}" var="carro"
+                                           itemLabel="#{carro.itemLabel}"
+                                           itemValue="#{carro}" />
+                            <p:ajax />
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="Data"/>
+                        <p:datePicker id="basic" value="#{agendaBean.agendaData}"
+                                      model="#{datePickerMetadataView.model}"/>
+
+                        <p:outputLabel value="Descrição"/>
+                        <p:inputText id="descricao" value="#{agendaBean.agendaDesc}"/>
+
+                        <p:commandButton value="Gravar" icon="pi pi-save" iconPos="right" actionListener="#{agendaBean.salvar()}" ajax="false" />
+                        <p:commandButton style="margin-right: 30px;" id="voltar" value="Voltar" action="#{carroBean.doVoltar}" ajax="false"></p:commandButton>
+                    </p:panelGrid>
+                </p:panelGrid>
+            </p:panel>
+        </h:form>
+    </h:body>
+
+</html>
