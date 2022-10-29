@@ -6,20 +6,53 @@
 
     <h:head>
     </h:head>
+    
+    <style> 
+        
+    h1{
+    padding-top: 20px;
+    text-align: center;
+}
+    #tabelaInteira {
+    width:500px;
+    height: 440px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    margin: 10px 5px;
+    padding: 4px;
+    margin-top: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: white;
+    box-shadow: 3px 3px 3px lightgray;
+}
+</style>
+    
     <h:body>
-        <h:outputText value="Index Principal"/>
-        <h:form id="form1">
-            <p:panel id="cadastroCliente" header="Informações">
-                <p:panelGrid columns="2" layout="grid">
-                    <p:panelGrid columns="1" layout="grid">
-                        <p:commandButton style="margin-right: 30px;" id="jhj" value="CADASTRAR CLIENTE" process="@this" action="#{clienteBean.doIr}" ajax="false"></p:commandButton>
-                        <p:commandButton style="margin-right: 30px;" id="cadastroCarro" value="CADASTRAR CARRO"  process="@this" action="#{carroBean.doIr}" ajax="false"></p:commandButton>
-                        <p:commandButton style="margin-right: 30px;" id="cadastroAgenda" value="AGENDAMENTO" process="@this" action="#{agendaBean.doIr}" ajax="false"></p:commandButton>
-                    </p:panelGrid>
-                </p:panelGrid>
+        <div id="tabelaInteira">
+  
+        <h1>Selecione para onde deseja ir</h1>
 
-            </p:panel>
+        <h:form id="form1">
+            <center>
+                
+            <br></br>     
+            <br></br>
+            <p:commandButton style="margin-right: 30px; width: 200px; height: 50px;" id="cadastroCliente" value="CADASTRAR CLIENTE" process="@this" action="#{clienteBean.doIr}" ajax="false"></p:commandButton>
+            
+            <br></br>
+            <br></br>
+            <br></br>
+            <p:commandButton style="margin-right: 30px; width: 200px; height: 50px;" id="cadastroCarro" value="CADASTRAR CARRO"  process="@this" action="#{carroBean.doIr}" ajax="false"></p:commandButton>
+            
+            <br></br> 
+            <br></br>
+            <br></br>
+            <p:commandButton style="margin-right: 30px; width: 200px; height: 50px;" id="cadastroAgenda" value="AGENDAMENTO" process="@this" action="#{agendaBean.doIr}" ajax="false"></p:commandButton>
+                  
+            </center>
         </h:form>
+        </div>
     </h:body>
 
 </html>
