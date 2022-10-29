@@ -29,9 +29,16 @@
 </style>
     
     <h:body>
-        <div id="tabelaInteira">
-  
-        <h1>Selecione para onde deseja ir</h1>
+        <h:outputText value="Index Principal"/>
+        <h:form id="form1">
+            <p:panel id="cadastroCliente" header="Informações">
+                <p:panelGrid columns="2" layout="grid">
+                    <p:panelGrid columns="1" layout="grid">
+                        <p:commandButton style="margin-right: 30px;" id="jhj" value="CADASTRAR CLIENTE" process="@this" action="#{indexBean.doIrCliente()}" ajax="false"></p:commandButton>
+                        <p:commandButton style="margin-right: 30px;" id="cadastroCarro" value="CADASTRAR CARRO"  process="@this" action="#{indexBean.doIrCarro()}" ajax="false"></p:commandButton>
+                        <p:commandButton style="margin-right: 30px;" id="cadastroAgenda" value="AGENDAMENTO" process="@this" action="#{indexBean.doIrAgenda()}" ajax="false"></p:commandButton>
+                    </p:panelGrid>
+                </p:panelGrid>
 
         <h:form id="form1">
             <center>
