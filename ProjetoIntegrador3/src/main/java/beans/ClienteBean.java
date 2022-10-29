@@ -35,10 +35,6 @@ public class ClienteBean implements Serializable {
         return "Index.xhtml";
     }
 
-    public String doIr() {
-        return "cadastroCliente.xhtml";
-    }
-
     public void salvar() {
         Cliente cliente = new Cliente();
 

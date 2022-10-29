@@ -52,10 +52,6 @@ public class CarroBean implements Serializable {
         return "Index.xhtml";
     }
 
-    public String doIr() {
-        return "cadastroCarro.xhtml";
-    }
-
     public void salvar() {
         //Metodos de validação para salvar
 
