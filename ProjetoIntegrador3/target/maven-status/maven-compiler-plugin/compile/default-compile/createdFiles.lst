@@ -14,5 +14,6 @@ mapeamento\Cliente.class
 service\AgendaService.class
 Converters\CarroConverter.class
 Converters\ModeloConverter.class
+beans\IndexBean.class
 beans\AgendaBean.class
 mapeamento\Carro.class

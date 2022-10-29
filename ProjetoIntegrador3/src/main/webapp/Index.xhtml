@@ -12,9 +12,9 @@
             <p:panel id="cadastroCliente" header="Informações">
                 <p:panelGrid columns="2" layout="grid">
                     <p:panelGrid columns="1" layout="grid">
-                        <p:commandButton style="margin-right: 30px;" id="jhj" value="CADASTRAR CLIENTE" process="@this" action="#{clienteBean.doIr}" ajax="false"></p:commandButton>
-                        <p:commandButton style="margin-right: 30px;" id="cadastroCarro" value="CADASTRAR CARRO"  process="@this" action="#{carroBean.doIr}" ajax="false"></p:commandButton>
-                        <p:commandButton style="margin-right: 30px;" id="cadastroAgenda" value="AGENDAMENTO" process="@this" action="#{agendaBean.doIr}" ajax="false"></p:commandButton>
+                        <p:commandButton style="margin-right: 30px;" id="jhj" value="CADASTRAR CLIENTE" process="@this" action="#{indexBean.doIrCliente()}" ajax="false"></p:commandButton>
+                        <p:commandButton style="margin-right: 30px;" id="cadastroCarro" value="CADASTRAR CARRO"  process="@this" action="#{indexBean.doIrCarro()}" ajax="false"></p:commandButton>
+                        <p:commandButton style="margin-right: 30px;" id="cadastroAgenda" value="AGENDAMENTO" process="@this" action="#{indexBean.doIrAgenda()}" ajax="false"></p:commandButton>
                     </p:panelGrid>
                 </p:panelGrid>
 

@@ -3,6 +3,8 @@ package beans;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import mapeamento.Cliente;
@@ -28,17 +30,35 @@ public class ClienteBean implements Serializable {
     public void init() {
         Cliente cliente = new Cliente();
     }
-    
-    public String doVoltar() {                  
+
+    public String doVoltar() {
         return "Index.xhtml";
     }
-    
-    public String doIr() {                  
+
+    public String doIr() {
         return "cadastroCliente.xhtml";
     }
 
     public void salvar() {
         Cliente cliente = new Cliente();
+
+        if (this.nome.isEmpty() || this.nome.isBlank()) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+                    "Warning", "É necessario adicionar uma nome para registrar o cliente."));
+            return;
+        }
+
+        if (this.cpf.isEmpty() || this.cpf.isBlank()) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+                    "Warning", "É necessario adicionar uma CPF para registrar o cliente."));
+            return;
+        }
+
+        if (this.telefone == 0) {
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
+                    "Warning", "É necessario adicionar uma telefone para registrar o cliente."));
+            return;
+        }
 
         if (email != null && !email.isEmpty()) {
             cliente.setCliEmail(this.email);
