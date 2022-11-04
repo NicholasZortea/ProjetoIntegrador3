@@ -5,10 +5,15 @@
       xmlns:p="http://primefaces.org/ui">
 
     <h:head>
+        <title>Cadastro de cliente</title>
     </h:head>
     <h:body>
         <h:outputText value=" Cadastro Cliente"/>
         <h:form id="form1">
+            <p:messages id="messages" showDetail="true" style="right: 90px;top: 20px; position:absolute;height: 60px;
+                        width: 300px; font-size:small; padding-left: auto;" closable="true" >
+                <p:autoUpdate/>
+            </p:messages>
             <p:panel id="cadastroCliente" header="Informações">
                 <p:panelGrid columns="2" layout="grid">
                     <p:panelGrid columns="1" layout="grid">
@@ -21,7 +26,7 @@
                         <p:outputLabel value="E-mail"/>
                         <p:inputText id="email" value="#{clienteBean.email}"/>
                         <p:commandButton value="Salvar" icon="pi pi-check" iconPos="right" actionListener="#{clienteBean.salvar()}" process="@this" ajax="false" />
-                        <p:commandButton style="margin-right: 30px;" id="voltar" value="Voltar" action="#{clienteBean.doVoltar}" ajax="false"></p:commandButton>
+                        <p:commandButton style="margin-right: 30px;"  icon="pi pi-angle-left" iconPos="right" id="voltar" value="Voltar" action="#{clienteBean.doVoltar}" ajax="false"></p:commandButton>
                     </p:panelGrid>
                 </p:panelGrid>
 

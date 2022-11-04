@@ -37,7 +37,7 @@
     </style>
     
     <h:head>
-        <title>Cadastro de Carros</title>
+        <title>Cadastro de carro</title>
     </h:head>
     <h:body>
         <h:outputText value=" Cadastro Carro"/>
@@ -90,7 +90,7 @@
                         </p:selectOneMenu>
 
                         <p:commandButton value="Gravar" icon="pi pi-save" iconPos="right" actionListener="#{carroBean.salvar()}" ajax="false" />
-                        <p:commandButton id="voltar" value="Voltar" action="#{carroBean.doVoltar}" ajax="false" />
+                        <p:commandButton id="voltar" icon="pi pi-angle-left" iconPos="right" value="Voltar" action="#{carroBean.doVoltar}" ajax="false" />
                     </p:panelGrid>
                 </div>
 
